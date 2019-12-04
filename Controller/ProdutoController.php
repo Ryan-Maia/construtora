@@ -12,13 +12,26 @@ class ProdutoController{
         require_once'../View/produto_view.php';
     }
     public function adicionar($a,$b,$c){
-        $this->produto->save($a,$b,$c);
+        if($this->produto->save($a,$b,$c)){
+            $_SESSION['mensagem'] = "Adicionado com sucesso!";
+        }else{
+            $_SESSION['mensagem'] = "Falha ao adicionar!";
+        }
+        
     }
     public function alterar($id,$a,$b,$c){
-        $this->produto->update($id,$a,$b,$c);
+        if($this->produto->update($id,$a,$b,$c)){
+            $_SESSION['mensagem'] = "Alteração salva com sucesso!";
+        }else{
+            $_SESSION['mensagem'] = "Falha na alteração!";
+        }
     }
     public function removerId($id){
-        $this->produto->remove($id);
+        if($this->produto->remove($id)){
+            $_SESSION['mensagem'] = "Remoção realizada com sucesso!";
+        }else{
+            $_SESSION['mensagem'] = "Falha ao remover!";
+        }
     }
     public function removerTodos(){
         $this->produto->removeAll();

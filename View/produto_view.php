@@ -11,9 +11,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
         <link rel="stylesheet" href="../assets/css/styles.min.css">
         <style>
-            input{
-                cursor: pointer;
-            }
             
         </style>
             
@@ -32,11 +29,21 @@
             </div>
             </div>
         </nav>
+        <div class="alert alert-dismissible alert-info" style="display: none">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Aviso</strong>  
+                <?php if(isset($_SESSION['mensagem'])){
+                            $mensagem = $_SESSION['mensagem'];
+                            echo $mensagem;
+                      }
+                ?>
+        </div>
         <div class="row">
             <div class="col">
                 <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Produtos</h1>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-xl-8 offset-xl-2">
                 <div class="table-responsive table-borderless table-hover table-primary">
@@ -46,12 +53,12 @@
                                 <th>Modelo</th>
                                 <th>Cor</th>
                                 <th>Tamanho</th>
-                                <th>Remover</th>
                                 <th>Atualizar</th>
+                                <th>Remover</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php        
+                            <?php
                                 $count = 0;
                                 foreach($produtos as $produto){
                                     echo "<tr>";
@@ -60,8 +67,8 @@
                                             echo "<td><input type='text' class='form-control' name='cor' value ='{$produto[1]}'></td>";
                                             echo "<td><input type='text' class='form-control' name='tamanho' value ='{$produto[2]}'></td>";
                                             echo "<input name='id' value='{$count}' hidden>";
-                                            echo "<td><button class='btn btn-danger' type='submit' name='apagar'>Remover</button></td>";
                                             echo "<td><button class='btn btn-success' type='submit' name='atualizar'>Atualizar</button></td>";
+                                            echo "<td><button class='btn btn-danger' type='submit' name='apagar'>Remover</button></td>";
                                         echo "</form>";
                                     echo "</tr>";
                                     
@@ -83,14 +90,24 @@
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="Cadastrar">Cadastrar</button></div>
             </form>
         </div>
+        
+        
+        
         <script src="../assets/js/jquery.min.js"></script>
         <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script>
+            //$(".alert").hide();
+        </script>
+        <?php
+            if(isset($mensagem)){
+                echo "<script>$('.alert').show().delay(800).fadeOut(400);</script>";
+                unset($mensagem);
+                unset($_SESSION['mensagem']);
+            }
+        ?>
     </body>
 
 </html>
 
-        <table>
-
-        </table>
 
 
