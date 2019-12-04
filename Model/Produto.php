@@ -32,7 +32,9 @@ class Produto{
         
     }
     public function listAll(){
-        return $_SESSION['produtos'];
+        if(isset($_SESSION['produtos'])){
+            return $_SESSION['produtos'];
+        }
     }
     public function removeAll(){
         if(isset($_SESSION['produtos'])){

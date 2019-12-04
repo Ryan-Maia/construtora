@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>construtora</title>
+        <title>SC - Produtos</title>
         <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
         <link rel="stylesheet" href="../assets/css/styles.min.css">
@@ -59,20 +59,22 @@
                         </thead>
                         <tbody>
                             <?php
-                                $count = 0;
-                                foreach($produtos as $produto){
-                                    echo "<tr>";
-                                        echo "<form action='ProdutoController.php' method='POST'>";
-                                            echo "<td><input type='text' class='form-control' name='modelo' value ='{$produto[0]}'></td>";
-                                            echo "<td><input type='text' class='form-control' name='cor' value ='{$produto[1]}'></td>";
-                                            echo "<td><input type='text' class='form-control' name='tamanho' value ='{$produto[2]}'></td>";
-                                            echo "<input name='id' value='{$count}' hidden>";
-                                            echo "<td><button class='btn btn-success' type='submit' name='atualizar'>Atualizar</button></td>";
-                                            echo "<td><button class='btn btn-danger' type='submit' name='apagar'>Remover</button></td>";
-                                        echo "</form>";
-                                    echo "</tr>";
-                                    
-                                    $count++;
+                                if(isset($_SESSION['produtos'])){
+                                    $count = 0;
+                                    foreach($produtos as $produto){
+                                        echo "<tr>";
+                                            echo "<form action='ProdutoController.php' method='POST'>";
+                                                echo "<td><input type='text' class='form-control' name='modelo' value ='{$produto[0]}'></td>";
+                                                echo "<td><input type='text' class='form-control' name='cor' value ='{$produto[1]}'></td>";
+                                                echo "<td><input type='text' class='form-control' name='tamanho' value ='{$produto[2]}'></td>";
+                                                echo "<input name='id' value='{$count}' hidden>";
+                                                echo "<td><button class='btn btn-success' type='submit' name='atualizar'>Atualizar</button></td>";
+                                                echo "<td><button class='btn btn-danger' type='submit' name='apagar'>Remover</button></td>";
+                                            echo "</form>";
+                                        echo "</tr>";
+
+                                        $count++;
+                                    }
                                 }
                             ?>
 
