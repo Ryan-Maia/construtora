@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../Model/Produto.php';
 
 class ProdutoController{
