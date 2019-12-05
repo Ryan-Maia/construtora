@@ -20,8 +20,9 @@ $clientes = $_REQUEST['clientes'];
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link active text-light" href="../Controller/ProdutoController.php">Produtos</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">Clientes</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">Vendas</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ClienteController.php">Clientes</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/VendaController.php">Vendas</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ReciboController.php">Recibos</a></li>
                 </ul>
         </div>
         </div>
@@ -91,7 +92,7 @@ $clientes = $_REQUEST['clientes'];
         <form method="POST" action="ClienteController.php">
             <h2 class="text-center">Cadastrar Clientes</h2>
             <div class="form-group"><input class="form-control" type="text" name="nome" placeholder="Nome" required></div>
-            <div class="form-group"><input class="form-control" type="text" name="dt_nasc" placeholder="Data de nascimento" autocomplete="off" required></div>
+            <div class="form-group">Data de nascimento<input class="form-control" type="date" name="dt_nasc" placeholder="dd/mm/aaaa" autocomplete="off" required></div>
             <div class="form-group"><input class="form-control" type="text" name="end_cli" placeholder="Endereço Cliente" required></div>
             <div class="form-group text-center">
                 <p class="text-center" style="font-size: 20px;font-weight: bold;font-style: normal;">Sexo</p>

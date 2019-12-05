@@ -1,8 +1,8 @@
 <?php
     $clientes = $_REQUEST['clientes'];
-    $produtos = $_REQUEST['produtos'];
+    $dados = $_REQUEST['dados'];
 ?>
-<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -28,9 +28,9 @@
         </div>
         </div>
     </nav>
-    <div class="alert alert-dismissible alert-info" style="display: none">
+    <div class="alert alert-dismissible alert-warning" style="display: none">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Aviso</strong>  
+        <strong>Alerta</strong>  
             <?php if(isset($_SESSION['mensagem'])){
                         $mensagem = $_SESSION['mensagem'];
                         unset($_SESSION['mensagem']);
@@ -39,48 +39,62 @@
             ?>
     </div>
     <div class="row">
-        <div class="col">
-            <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Venda</h1>
+        <div class="col-xl-6 offset-xl-3">
+            <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Recibos</h1>
+            <h1 style="font-size: 28px;"><?php echo (isset($dados)) ? "Cliente: " . $dados[0][0] : "Cliente:";?></h1>
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive table-borderless table-hover table-primary">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr id="darker">
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    foreach($dados as $i){
+                                        echo"<tr>";
+                                            echo"<td>{$i[1]}</td>";
+                                            echo"<td>{$i[2]}<br></td>";
+                                            echo"<td>R$: {$i[3]}<br></td>";
+                                        echo"</tr>";
+                                    }
+                                    
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="contact-clean">
-        <form method="POST" action="VendaController.php">
-            <h2 class="text-center">Efetuar Venda</h2>
+        <form method="post" action="ReciboController.php">
+            <h2 class="text-center">Pesquisar Recibo</h2>
             <div class="form-group">
                 <select class="form-control" name="cliente">
                     <optgroup label="Clientes">
                         <?php
-                            foreach($clientes as $c){
-                                echo "<option value='{$c[0]}'>{$c[0]}</option>";
+                            if(isset($clientes)){
+                                foreach($clientes as $c){
+                                    echo "<option value='{$c[0]}'>{$c[0]}</option>";
+                                }
                             }
                         ?>
                     </optgroup>
                 </select>
             </div>
-            <div class="form-group">
-                <div class="form-row">
-                    <div class="col-xl-8">            
-                        <select class="form-control" name="produto">
-                            <optgroup label="Produtos">
-                                <?php
-                                foreach($produtos as $p){
-                                    echo "<option value='{$p[0]}'>{$p[0]}</option>";
-                                }
-                                ?>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="col-xl-4"><input class="form-control" type="text" name="quantidade" placeholder="Quantidade" autocomplete="off" inputmode="numeric"></div>
-                </div>
-            </div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="vender">vender</button></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="consultar">Pesquisar</button></div>
         </form>
     </div>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <?php
         if(isset($mensagem)){
-            echo "<script>$('.alert').show().delay(1500).fadeOut(400);</script>";
+            echo "<script>$('.alert').show().delay(2000).fadeOut(600);</script>";
         }
     ?>
 </body>
