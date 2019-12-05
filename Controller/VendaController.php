@@ -11,20 +11,27 @@ class VendaController{
         $this->produto = new Produto();
         $this->cliente = new Cliente();
     }    
-    public function adicionar($c, $p, $q){
-        if($this->venda->save($c, $p, $q, 10)){
-            $_SESSION['mensagem'] = "Adicionado com sucesso!";
-        }else{
-            $_SESSION['mensagem'] = "Falha ao adicionar!";
-        }
-    }
     public function listar(){
         $_REQUEST['produtos'] = $this->produto->listAll();
         $_REQUEST['clientes'] = $this->cliente->listAll();
         require_once'../View/venda_view.php';
     }
+    public function adicionar($c, $p, $q){
+        if($this->venda->save($c, $p, $q, 10)){
+            $_SESSION['mensagem'] = "Venda realizada com sucesso!";
+        }else{
+            $_SESSION['mensagem'] = "Falha ao efetuar a venda!";
+        }
+    }
+    
 }
 
 $a = new VendaController();
-$a->adicionar("Ryan", "Marmore 3", 10);
+//$a->adicionar("Ryan", "Marmore 3", 10);
+
+
+if(isset($_POST['vender'])){
+    $a->adicionar($_POST['cliente'], $_POST['produto'], $_POST['quantidade']);    
+}
+
 $a->listar();
