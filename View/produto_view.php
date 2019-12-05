@@ -18,11 +18,11 @@
 
     <body style="background-color: rgb(110,126,142);">
         <nav class="navbar navbar-light navbar-expand-md bg-primary">
-            <div class="container-fluid"><a class="navbar-brand text-light" href="#">Construtora Supra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container-fluid"><a class="navbar-brand text-light">Construtora Supra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div
                     class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item" role="presentation"><a class="nav-link active text-light" href="../Controller/ProdutoController.php">Produtos</a></li>
+                        <li class="nav-item" role="presentation"><a style="color:#33ffff !important;" class="nav-link active text-light selected" href="../Controller/ProdutoController.php">Produtos</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ClienteController.php">Clientes</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/VendaController.php">Vendas</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ReciboController.php">Recibos</a></li>
@@ -45,6 +45,15 @@
             </div>
         </div>
         
+        <div class="contact-clean" style='padding-top: 0px;'>
+            <form action="ProdutoController.php" method="post">
+                <h2 class="text-center">Cadastrar Produtos</h2>
+                <div class="form-group"><input class="form-control" type="text" name="modelo" placeholder="Modelo" required></div>
+                <div class="form-group"><input class="form-control" type="text" name="cor" placeholder="Cor" required></div>
+                <div class="form-group"><input class="form-control" name="tamanho" placeholder="Tamanho" required></div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="Cadastrar">Cadastrar</button></div>
+            </form>
+        </div>
         <div class="row">
             <div class="col-xl-8 offset-xl-2">
                 <div class="table-responsive table-borderless table-hover table-primary">
@@ -61,7 +70,8 @@
                         <tbody>
                             <?php
                                 if(isset($produtos)){
-                                    $count = 0;
+                                    $produtos = array_reverse($produtos);
+                                    $count = count($produtos) - 1;
                                     foreach($produtos as $produto){
                                         echo "<tr>";
                                             echo "<form action='ProdutoController.php' method='POST'>";
@@ -74,7 +84,7 @@
                                             echo "</form>";
                                         echo "</tr>";
 
-                                        $count++;
+                                        $count--;
                                     }
                                 }
                             ?>
@@ -84,15 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="contact-clean">
-            <form action="ProdutoController.php" method="post">
-                <h2 class="text-center">Cadastrar Produtos</h2>
-                <div class="form-group"><input class="form-control" type="text" name="modelo" placeholder="Modelo" required></div>
-                <div class="form-group"><input class="form-control" type="text" name="cor" placeholder="Cor" required></div>
-                <div class="form-group"><input class="form-control" name="tamanho" placeholder="Tamanho" required></div>
-                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="Cadastrar">Cadastrar</button></div>
-            </form>
-        </div>
+
         
         
         

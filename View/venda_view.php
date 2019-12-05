@@ -16,13 +16,13 @@
 
 <body style="background-color: rgb(110,126,142);">
     <nav class="navbar navbar-light navbar-expand-md bg-primary">
-        <div class="container-fluid"><a class="navbar-brand text-light" href="#">Construtora Supra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid"><a class="navbar-brand text-light" >Construtora Supra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link active text-light" href="../Controller/ProdutoController.php">Produtos</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ClienteController.php">Clientes</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/VendaController.php">Vendas</a></li>
+                    <li class="nav-item" role="presentation"><a style="color:#33ffff !important;" class="nav-link text-light" href="../Controller/VendaController.php">Vendas</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ReciboController.php">Recibos</a></li>
                 </ul>
         </div>
@@ -47,7 +47,7 @@
         <form method="POST" action="VendaController.php">
             <h2 class="text-center">Efetuar Venda</h2>
             <div class="form-group">
-                <select class="form-control" name="cliente">
+                <select class="form-control" name="cliente" required>
                     <optgroup label="Clientes">
                         <?php
                             foreach($clientes as $c){
@@ -60,7 +60,7 @@
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-xl-8">            
-                        <select class="form-control" name="produto">
+                        <select class="form-control" name="produto" required>
                             <optgroup label="Produtos">
                                 <?php
                                 foreach($produtos as $p){
@@ -70,7 +70,7 @@
                             </optgroup>
                         </select>
                     </div>
-                    <div class="col-xl-4"><input class="form-control" type="text" name="quantidade" placeholder="Quantidade" autocomplete="off" inputmode="numeric"></div>
+                    <div class="col-xl-4"><input class="form-control" min="1" type="number" name="quantidade" placeholder="Quantidade" autocomplete="off" inputmode="numeric" required></div>
                 </div>
             </div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="vender">vender</button></div>

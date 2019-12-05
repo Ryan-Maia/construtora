@@ -9,18 +9,34 @@ class ClienteController{
         $this->cliente = new Cliente();
     }
     public function adicionar($n,$d,$s,$ec,$ee){
-        if($this->cliente->save($n,$d,$s,$ec,$ee)){
+        $dataNasc = explode("-", $d);
+        
+        if(intval($dataNasc[0]) <= intval(date("Y"))){
+            
+            if($this->cliente->save($n,$d,$s,$ec,$ee)){
             $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
+            }else{
+                $_SESSION['mensagem'] = "Falha no cadastro!";
+            }
         }else{
-            $_SESSION['mensagem'] = "Falha no cadastro!";
+            $_SESSION['mensagem'] = "Data inserida inválida!";
+            $_SESSION['status'] = "error";
         }
+        
         
     }
     public function alterar($id,$n,$d,$s,$ec,$ee){
-        if($this->cliente->update($id,$n,$d,$s,$ec,$ee)){
-            $_SESSION['mensagem'] = "Alteração salva com sucesso!";
+        $dataNasc = explode("-", $d);
+
+        if(intval($dataNasc[0]) <= intval(date("Y"))){
+            if($this->cliente->update($id,$n,$d,$s,$ec,$ee)){
+                $_SESSION['mensagem'] = "Alteração salva com sucesso!";
+            }else{
+                $_SESSION['mensagem'] = "Falha na alteração!";
+            }
         }else{
-            $_SESSION['mensagem'] = "Falha na alteração!";
+            $_SESSION['mensagem'] = "Data inserida inválida!";
+            $_SESSION['status'] = "error";
         }
     }
     public function listar(){
@@ -42,7 +58,9 @@ if(isset($_POST['apagar'])){
     $a->removerId($_POST['id']);
 }
 if(isset($_POST['cadastrar'])){
+    //    $_SESSION['status'] = 'ok';
     $a->adicionar($_POST['nome'],$_POST['dt_nasc'],$_POST['sexo'],$_POST['end_cli'],$_POST['end_ent']);
+    
 }
 
 if(isset($_POST['atualizar'])){
