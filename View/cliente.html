@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>construtora</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body style="background-color: rgb(110,126,142);">
+    <nav class="navbar navbar-light navbar-expand-md bg-primary">
+        <div class="container-fluid"><a class="navbar-brand text-light" href="#">Construtora Supra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active text-light" href="#">Produtos</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">Clientes</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">Vendas</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Clientes</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-10 offset-xl-1">
+            <div class="table-responsive table-borderless table-hover table-primary">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr id="darker">
+                            <th>Nome</th>
+                            <th>Data de Nascimento</th>
+                            <th>Sexo</th>
+                            <th>Endereço Cliente</th>
+                            <th>Endereço Entrega</th>
+                            <th>Atualizar</th>
+                            <th>Remover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td class="text-center" style="width: 109px;">
+                                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">M</label></div>
+                                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">F</label></div>
+                            </td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><button class="btn btn-success" type="button">atualizar</button></td>
+                            <td><button class="btn btn-danger" type="button">Remover</button></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td class="text-center" style="width: 109px;">
+                                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">M</label></div>
+                                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">F</label></div>
+                            </td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><input type="text" class="form-control"></td>
+                            <td><button class="btn btn-success" type="button">atualizar</button></td>
+                            <td><button class="btn btn-danger" type="button">Remover</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="contact-clean">
+        <form method="post">
+            <h2 class="text-center">Cadastrar Clientes</h2>
+            <div class="form-group"><input class="form-control" type="text" name="nome" placeholder="Nome"></div>
+            <div class="form-group"><input class="form-control" type="text" name="dt_nasc" placeholder="Data de nascimento" autocomplete="off"></div>
+            <div class="form-group"><input class="form-control" type="text" name="end_cli" placeholder="Endereço Cliente"></div>
+            <div class="form-group text-center">
+                <p class="text-center" style="font-size: 20px;font-weight: bold;font-style: normal;">Sexo</p>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Masculino</label></div>
+                <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Feminino</label></div>
+            </div>
+            <div class="form-group"><input class="form-control" type="text" name="end_ent" placeholder="Endereço Entrega"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Cadastrar</button></div>
+        </form>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

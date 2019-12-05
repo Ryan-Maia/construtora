@@ -23,7 +23,7 @@
                     class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
                         <li class="nav-item" role="presentation"><a class="nav-link active text-light" href="#">Produtos</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">Clientes</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ClienteController.php">Clientes</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link text-light" href="#">Vendas</a></li>
                     </ul>
             </div>
@@ -59,7 +59,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                if(isset($_SESSION['produtos'])){
+                                if(isset($produtos)){
                                     $count = 0;
                                     foreach($produtos as $produto){
                                         echo "<tr>";
@@ -97,12 +97,9 @@
         
         <script src="../assets/js/jquery.min.js"></script>
         <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-        <script>
-            //$(".alert").hide();
-        </script>
         <?php
             if(isset($mensagem)){
-                echo "<script>$('.alert').show().delay(800).fadeOut(400);</script>";
+                echo "<script>$('.alert').show().delay(1500).fadeOut(400);</script>";
                 unset($mensagem);
                 unset($_SESSION['mensagem']);
             }

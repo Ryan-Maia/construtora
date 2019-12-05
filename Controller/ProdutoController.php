@@ -7,8 +7,7 @@ class ProdutoController{
         $this->produto = new Produto();
     }
     public function listar(){
-        $produtos = $this->produto->listAll();
-        $_REQUEST['produtos'] = $produtos;
+        $_REQUEST['produtos'] = $this->produto->listAll();
         require_once'../View/produto_view.php';
     }
     public function adicionar($a,$b,$c){
