@@ -17,34 +17,32 @@
     </head>
 
     <body style="background-color: rgb(110,126,142);">
-        <nav class="navbar navbar-light navbar-expand-md bg-primary">
-            <div class="container-fluid"><a class="navbar-brand text-light">Construtora Supra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div
-                    class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item" role="presentation"><a style="color:#33ffff !important;" class="nav-link active text-light selected" href="../Controller/ProdutoController.php">Produtos</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ClienteController.php">Clientes</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/VendaController.php">Vendas</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-light" href="../Controller/ReciboController.php">Recibos</a></li>
-                    </ul>
-            </div>
-            </div>
-        </nav>
-        <div class="alert alert-dismissible alert-info" style="display: none">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Aviso</strong>  
-                <?php if(isset($_SESSION['mensagem'])){
-                            $mensagem = $_SESSION['mensagem'];
-                            echo $mensagem;
-                      }
-                ?>
-        </div>
+        <?php
+        $page=1;
+        require_once '../View/menu.php';
+            if($_SESSION['status'] == "error"){
+                echo "<div class='alert alert-dismissible alert-danger' style='display: none'>";
+                unset($_SESSION['status']);
+            }else{
+                echo "<div class='alert alert-dismissible alert-info' style='display: none'>";
+            }
+        ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Aviso</strong>  
+        <?php 
+            if(isset($_SESSION['mensagem'])){
+                $mensagem = $_SESSION['mensagem'];
+                echo $mensagem;
+            }
+            echo "</div>";
+        ?>
         <div class="row">
             <div class="col">
                 <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Produtos</h1>
             </div>
         </div>
-        
+
+
         <div class="contact-clean" style='padding-top: 0px;'>
             <form action="ProdutoController.php" method="post">
                 <h2 class="text-center">Cadastrar Produtos</h2>

@@ -31,6 +31,7 @@ class ProdutoController{
             $_SESSION['mensagem'] = "Remoção realizada com sucesso!";
         }else{
             $_SESSION['mensagem'] = "Falha ao remover!";
+            $_SESSION['status'] = "error";
         }
     }
     public function removerTodos(){

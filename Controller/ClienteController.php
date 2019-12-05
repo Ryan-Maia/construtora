@@ -47,7 +47,8 @@ class ClienteController{
         if($this->cliente->remove($id)){
             $_SESSION['mensagem'] = "Remoção realizada com sucesso!";
         }else{
-            $_SESSION['mensagem'] = "Falha ao remover!";
+            $_SESSION['mensagem'] = "Falha ao remover cliente!";
+            $_SESSION['status'] = "error";
         }
     }
 }

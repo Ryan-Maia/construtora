@@ -21,11 +21,31 @@ class Produto{
             return false;
         }
     }
+    private function checkId($id){
+        //true : Produto utilizado
+        //false : Produto não utilizado
+        $isIn = false;
+        foreach($_SESSION['vendas'] as $i){
+            if($i[1] == $_SESSION['produtos'][$id][0]){
+                $isIn = true;
+            }
+        }
+        if ($isIn){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function remove($id){
         try{
-            unset($_SESSION['produtos'][$id]);
-            $_SESSION['produtos'] = array_values($_SESSION['produtos']);
-            return true;
+            if(!$this->checkId($id)){
+                unset($_SESSION['produtos'][$id]);
+                $_SESSION['produtos'] = array_values($_SESSION['produtos']);
+                return true;
+            }else{
+                return false;
+            }
+            
         } catch (Exception $e) {
             return false;
         }

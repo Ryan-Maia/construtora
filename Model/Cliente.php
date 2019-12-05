@@ -17,11 +17,33 @@ class Cliente{
             return $_SESSION['clientes'];
         }    
     }
-    public function remove($id){
-        try{
-            unset($_SESSION['clientes'][$id]);
-            $_SESSION['clientes'] = array_values($_SESSION['clientes']);
+    private function checkId($id){
+        //true : Usuario utilizado
+        //false : Usuario não utilizado
+        $isIn = false;
+        foreach($_SESSION['vendas'] as $i){
+            if($i[0] == $_SESSION['clientes'][$id][0]){
+                $isIn = true;
+            }
+        }
+        if ($isIn){
             return true;
+        }else{
+            return false;
+        }
+    }
+    public function remove($id){
+        
+        
+        try{
+            if (!$this->checkId($id)){
+                unset($_SESSION['clientes'][$id]);
+                $_SESSION['clientes'] = array_values($_SESSION['clientes']);
+                return true;
+            }else{
+                return false;
+            }
+            
         } catch (Exception $e) {
             return false;
         }
