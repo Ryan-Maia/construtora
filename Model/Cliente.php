@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 class Cliente{
     //private $nome,$dataNascimento,$sexo,$endCliente,$endEntrega;
