@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 class Produto{
     public function save($modelo,$cor,$tamanho){
