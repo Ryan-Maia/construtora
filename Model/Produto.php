@@ -25,16 +25,21 @@ class Produto{
         //true : Produto utilizado
         //false : Produto não utilizado
         $isIn = false;
-        foreach($_SESSION['vendas'] as $i){
-            if($i[1] == $_SESSION['produtos'][$id][0]){
-                $isIn = true;
+        if(isset($_SESSION['vendas'])){
+            foreach($_SESSION['vendas'] as $i){
+                if($i[1] == $_SESSION['produtos'][$id][0]){
+                    $isIn = true;
+                }
             }
-        }
-        if ($isIn){
-            return true;
+            if ($isIn){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
+        
     }
     public function remove($id){
         try{
