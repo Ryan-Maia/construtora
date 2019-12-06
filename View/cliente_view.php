@@ -17,24 +17,8 @@ $clientes = $_REQUEST['clientes'];
     <?php
         $page=2;
         require_once '../View/menu.php';
-
-        if($_SESSION['status'] == "error"){
-            echo "<div class='alert alert-dismissible alert-danger' style='display: none'>";
-            unset($_SESSION['status']);
-        }else{
-            echo "<div class='alert alert-dismissible alert-info' style='display: none'>";
-        }
+        require_once '../View/alerta.php';
     ?>
-    
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Aviso</strong>  
-            <?php
-                if(isset($_SESSION['mensagem'])){
-                    $mensagem = $_SESSION['mensagem'];
-                    echo $mensagem;
-                }
-                echo "</div>";
-            ?>
     <div class="row">
         <div class="col">
             <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Clientes</h1>

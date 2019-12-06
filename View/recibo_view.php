@@ -1,6 +1,9 @@
 <?php
     $clientes = $_REQUEST['clientes'];
-    $dados = $_REQUEST['dados'];
+    if(isset($_REQUEST['dados'])){
+        $dados = $_REQUEST['dados'];
+    }
+    
 ?>
 
 <html>
@@ -18,17 +21,8 @@
     <?php
         $page=4;
         require_once '../View/menu.php';
-    ?>
-    <div class="alert alert-dismissible alert-warning" style="display: none">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Alerta</strong>  
-            <?php if(isset($_SESSION['mensagem'])){
-                        $mensagem = $_SESSION['mensagem'];
-                        unset($_SESSION['mensagem']);
-                        echo $mensagem;
-                  }
-            ?>
-    </div>
+        require_once '../View/alerta.php';
+    ?>    
     <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Recibos</h1>
     <div class="contact-clean">
         <form method="post" action="ReciboController.php">
@@ -66,22 +60,24 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $valorFinal;
-                                    foreach($dados as $i){
-                                        $valorFinal+=$i[3];
-                                        echo"<tr>";
-                                            echo"<td>{$i[1]}</td>";
-                                            echo"<td>{$i[2]}<br></td>";
-                                            echo"<td>R$: {$i[3]}<br></td>";
-                                        echo"</tr>";
+                                    if (isset($dados)){
+                                        $valorFinal=0;
+                                        foreach($dados as $i){
+                                            $valorFinal+=$i[3];
+                                            echo"<tr>";
+                                                echo"<td>{$i[1]}</td>";
+                                                echo"<td>{$i[2]}<br></td>";
+                                                echo"<td>R$: {$i[3]}<br></td>";
+                                            echo"</tr>";
+                                        }
+                                        echo"<tfoot>";
+                                            echo"<tr>";
+                                                echo"<td></td>";
+                                                echo"<td><br></td>";
+                                                echo"<td>R$: {$valorFinal}<br></td>";
+                                            echo"</tr>";
+                                        echo"</tfoot>";
                                     }
-                                    echo"<tfoot>";
-                                        echo"<tr>";
-                                            echo"<td></td>";
-                                            echo"<td><br></td>";
-                                            echo"<td>R$: {$valorFinal}<br></td>";
-                                        echo"</tr>";
-                                    echo"</tfoot>";
                                 ?>
                             </tbody>
                         </table>
@@ -95,7 +91,7 @@
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <?php
         if(isset($mensagem)){
-            echo "<script>$('.alert').show().delay(2000).fadeOut(600);</script>";
+            echo "<script>$('.alert').show().delay(1500).fadeOut(400);</script>";
         }
     ?>
 </body>

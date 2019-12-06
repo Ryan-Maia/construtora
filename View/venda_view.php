@@ -18,17 +18,8 @@
     <?php
         $page=3;
         require_once '../View/menu.php';
+        require_once '../View/alerta.php';
     ?>
-    <div class="alert alert-dismissible alert-info" style="display: none">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Aviso</strong>  
-            <?php if(isset($_SESSION['mensagem'])){
-                        $mensagem = $_SESSION['mensagem'];
-                        unset($_SESSION['mensagem']);
-                        echo $mensagem;
-                  }
-            ?>
-    </div>
     <div class="row">
         <div class="col">
             <h1 class="text-center text-light" style="margin-top: 44px;margin-bottom: 36px;">Venda</h1>

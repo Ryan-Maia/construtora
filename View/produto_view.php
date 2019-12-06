@@ -20,21 +20,7 @@
         <?php
         $page=1;
         require_once '../View/menu.php';
-            if($_SESSION['status'] == "error"){
-                echo "<div class='alert alert-dismissible alert-danger' style='display: none'>";
-                unset($_SESSION['status']);
-            }else{
-                echo "<div class='alert alert-dismissible alert-info' style='display: none'>";
-            }
-        ?>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Aviso</strong>  
-        <?php 
-            if(isset($_SESSION['mensagem'])){
-                $mensagem = $_SESSION['mensagem'];
-                echo $mensagem;
-            }
-            echo "</div>";
+        require_once '../View/alerta.php';    
         ?>
         <div class="row">
             <div class="col">
