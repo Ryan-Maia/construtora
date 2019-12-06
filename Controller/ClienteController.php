@@ -15,8 +15,10 @@ class ClienteController{
             
             if($this->cliente->save($n,$d,$s,$ec,$ee)){
             $_SESSION['mensagem'] = "Cadastro realizado com sucesso!";
+            $_SESSION['status'] = "success";
             }else{
                 $_SESSION['mensagem'] = "Falha no cadastro!";
+                $_SESSION['status'] = "error";
             }
         }else{
             $_SESSION['mensagem'] = "Data inserida inválida!";
@@ -31,8 +33,10 @@ class ClienteController{
         if(intval($dataNasc[0]) <= intval(date("Y"))){
             if($this->cliente->update($id,$n,$d,$s,$ec,$ee)){
                 $_SESSION['mensagem'] = "Alteração salva com sucesso!";
+                $_SESSION['status'] = "success";
             }else{
                 $_SESSION['mensagem'] = "Falha na alteração!";
+                $_SESSION['status'] = "error";
             }
         }else{
             $_SESSION['mensagem'] = "Data inserida inválida!";
@@ -46,6 +50,7 @@ class ClienteController{
     public function removerId($id){
         if($this->cliente->remove($id)){
             $_SESSION['mensagem'] = "Remoção realizada com sucesso!";
+            $_SESSION['status'] = "success";
         }else{
             $_SESSION['mensagem'] = "Falha ao remover cliente!";
             $_SESSION['status'] = "error";

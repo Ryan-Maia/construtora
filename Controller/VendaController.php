@@ -19,8 +19,10 @@ class VendaController{
     public function adicionar($c, $p, $q){
         if($this->venda->save($c, $p, $q, 10)){
             $_SESSION['mensagem'] = "Venda realizada com sucesso!";
+            $_SESSION['status'] = "success";
         }else{
             $_SESSION['mensagem'] = "Falha ao efetuar a venda!";
+            $_SESSION['status'] = "error";
         }
     }
     

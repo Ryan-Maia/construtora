@@ -40,11 +40,13 @@ if(isset($_POST['consultar'])){
     $r = $a->pesquisar($_POST['cliente']);
     if($r != false){
         $_REQUEST['dados'] = $r;
+        $_SESSION['mensagem'] = "Consulta realizada com sucesso!";
+        $_SESSION['status'] = "success";
     }else{
         $_SESSION['mensagem'] = "O usuário não possui nenhuma compra";
+        $_SESSION['status'] = "error";
         
     }
 }
 
 $a->listar();
-echo "ue";

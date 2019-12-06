@@ -14,21 +14,26 @@ class ProdutoController{
     public function adicionar($a,$b,$c){
         if($this->produto->save($a,$b,$c)){
             $_SESSION['mensagem'] = "Adicionado com sucesso!";
+            $_SESSION['status'] = "success";
         }else{
             $_SESSION['mensagem'] = "Falha ao adicionar!";
+            $_SESSION['status'] = "error";
         }
         
     }
     public function alterar($id,$a,$b,$c){
         if($this->produto->update($id,$a,$b,$c)){
             $_SESSION['mensagem'] = "Alteração salva com sucesso!";
+            $_SESSION['status'] = "success";
         }else{
             $_SESSION['mensagem'] = "Falha na alteração!";
+            $_SESSION['status'] = "error";
         }
     }
     public function removerId($id){
         if($this->produto->remove($id)){
             $_SESSION['mensagem'] = "Remoção realizada com sucesso!";
+            $_SESSION['status'] = "success";
         }else{
             $_SESSION['mensagem'] = "Falha ao remover!";
             $_SESSION['status'] = "error";
