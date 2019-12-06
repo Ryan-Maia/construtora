@@ -45,11 +45,6 @@ class ProdutoController{
 }
 
 $a = new ProdutoController();
-//$a->removerTodos();
-//$a->adicionar("Marmore","Branco","10 x 10 x 10cm");
-//$a->adicionar("Tijolo","Cinza","30 x 24 x 51cm");
-//$a->adicionar("Marmore","Branco","10 x 10 x 10cm");
-
 
 if(isset($_POST['apagar'])){
     $a->removerId($_POST['id']);

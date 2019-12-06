@@ -20,7 +20,7 @@
         <?php
         $page=1;
         require_once '../View/menu.php';
-        require_once '../View/alerta.php';    
+        require_once '../View/alerta.php';
         ?>
         <div class="row">
             <div class="col">
