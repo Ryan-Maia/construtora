@@ -29,8 +29,6 @@ class VendaController{
 }
 
 $a = new VendaController();
-//$a->adicionar("Ryan", "Marmore 3", 10);
-
 
 if(isset($_POST['vender'])){
     $a->adicionar($_POST['cliente'], $_POST['produto'], $_POST['quantidade']);    

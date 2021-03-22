@@ -1,8 +1,6 @@
 <?php
 
-class Cliente{
-    //private $nome,$dataNascimento,$sexo,$endCliente,$endEntrega;
-    
+class Cliente{    
     public function save($nome,$dataNascimento,$sexo,$endCliente,$endEntrega){
         try{
             $_SESSION['clientes'][] = [$nome,$dataNascimento,$sexo,$endCliente,$endEntrega];

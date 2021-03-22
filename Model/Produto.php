@@ -1,6 +1,4 @@
 <?php
-//session_start();
-
 class Produto{
     public function save($modelo,$cor,$tamanho){
      // lógica para salvar o produto na $_SESSION
